@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>launchsquared</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="center">
+        <p>Height: <span class="flippy" id="height">0</span> m, Apoapsis: <span id="apoapsis">0</span> m, Fuel: <span id="fuel">N/A</span>, Science: <span id="science">0</span></p>
+        <input type="text" id="rocketcode" placeholder="rocket code here" />
+        <details>
+            <summary>
+                Parts
+            </summary>
+            <div>
+                <button onclick="document.getElementById('rocketcode').value += 'tA';">Add basic thruster</button>
+                <button class="advrtry" style="display: none;" onclick="document.getElementById('rocketcode').value += 'tB';">Add advanced thruster</button>
+                <button class="advthst" style="display: none;" onclick="document.getElementById('rocketcode').value += 'tC';">Add tier 1 ultimate thruster</button>
+                <button class="advthst" style="display: none;" onclick="document.getElementById('rocketcode').value += 'tD';">Add tier 2 ultimate thruster</button>
+                <button class="advthst" style="display: none;" onclick="document.getElementById('rocketcode').value += 'tE';">Add tier 3 ultimate thruster</button>
+                <button class="advfuel" style="display: none;" onclick="document.getElementById('rocketcode').value += 'fC';">Add tier 1 ultimate fuel tank</button>
+                <button class="advfuel" style="display: none;" onclick="document.getElementById('rocketcode').value += 'fD';">Add tier 2 ultimate fuel tank</button>
+                <button class="advfuel" style="display: none;" onclick="document.getElementById('rocketcode').value += 'fE';">Add tier 3 ultimate fuel tank</button>
+                <button onclick="document.getElementById('rocketcode').value += 'fA';">Add basic fuel tank</button>
+                <button class="advrtry" style="display: none;" onclick="document.getElementById('rocketcode').value += 'fB';">Add advanced fuel tank</button>
+                <button class="stblzr" style="display: none;" onclick="document.getElementById('rocketcode').value += 'sA';">Add basic stabilizer</button>
+            </div>
+        </details>
+        <details>
+            <summary>
+                Research
+            </summary>
+            <div>
+                <button id="advrtyRE" onclick="p.research('advanced_rocketry');">Advanced Rocketry (20 science)</button>
+                <button id="stblzrRE" onclick="p.research('stabilizer');">Stabilizers (10 science)</button>
+                 <button id="advthstRE" onclick="p.research('advanced_thrusters');">Advanced Thrusters (500 science)</button>
+                 <button id="advfuelRE" onclick="p.research('advanced_fuel');">Advanced Fuel (500 science)</button>
+            </div>
+        </details>
+        <details>
+            <summary>
+                Settings
+            </summary>
+            <div>
+                <button onclick="p.saveGame();">Save</button>
+                <button onclick="p.loadGame();">Load</button>
+                <input type="text" id="speedval" placeholder="Speed (multiplier, 1 is default)" />
+                <button onclick="p.speed=parseInt(document.getElementById('speedval').value);">Set speed</button>
+                <button onclick="if(prompt('Reset for real? (press esc for no, type yes for reset)')=='yes'){reset();}" style="color: red;">Reset</button>
+            </div>
+        </details>
+        <button onclick="runs++;p.cancel = true;p.convert(document.getElementById('rocketcode').value);">Launch</button>
+        
+        <canvas id="canv"></canvas>
+    	<script src="src/mattex.js"></script>
+    	<script src="src/media.js"></script>
+    	<script src="plugin.js"></script>
+        <script src="src/movement.js"></script>
+        <script src="physics.js"></script>
+        <script src="script.js"></script>
+    </div>
+  </body>
+</html>
